@@ -11,9 +11,21 @@ const s = require('fs').readFileSync(0, 'utf-8').trim();
  */
 var repeatedSubstringPattern = function(s) {
 
-    let newS = s + s;
-     newS = newS.slice(1, newS.length - 1);
-    return newS.includes(s);
+    for(let i =1; i<s.length; i++ ){
+        if(s.length % i !== 0){
+            continue;
+        }
+        let pattern = s.slice(0, i); 
+        let repeated = "";
+        for(let k =0; k < s.length/i; k++){
+              repeated = repeated + pattern;
+        }
+
+        if(repeated === s){
+            return true;
+        }
+    }
+    return false
     
 };
 
